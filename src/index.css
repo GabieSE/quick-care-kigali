@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0D3F6B;
+  --navy-dark: #071F35;
+  --green: #4CAF50;
+  --orange: #F97316;
+  --cream: #FAFAFA;
+  --warm: #FDF8F3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--cream);
+  color: #1A1A2E;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Twemoji 3D emoji sizing */
+img.emoji {
+  height: 1.2em;
+  width: 1.2em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.15em;
+  display: inline-block;
+}
+
+/* Scroll reveal — plain CSS, never purged by Tailwind */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+
+/* Apple-style smooth scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(13,63,107,0.25); border-radius: 99px; }
+
+/* Glass utility */
+.glass {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* ===== RESPONSIVE GRID OVERRIDES ===== */
+/* Fix: inline styles override Tailwind, so we use !important on mobile */
+
+@media (max-width: 768px) {
+  /* All 2-col grids become 1-col on mobile */
+  .grid-mobile-1 {
+    grid-template-columns: 1fr !important;
+  }
+  /* Stat cards stay 3-col but smaller */
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  .stats-grid > div {
+    padding: 14px 8px !important;
+  }
+  .stats-grid p:first-child {
+    font-size: 18px !important;
+  }
+  /* Service modal details grid */
+  .modal-details-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Booking channels grid */
+  .booking-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* Section padding reduction */
+  section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  /* Font size reductions for mobile */
+  h1 {
+    font-size: clamp(32px, 9vw, 48px) !important;
+    letter-spacing: -0.03em !important;
+  }
+  h2 {
+    font-size: clamp(26px, 7vw, 40px) !important;
+  }
+  /* Hero floating cards - hide on very small screens */
+  @media (max-width: 480px) {
+    .hero-float-card { display: none !important; }
+  }
+  /* Footer grid */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* HowItWorks CTA bar */
+  .cta-bar {
+    padding: 28px 24px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  /* WhatsApp banner */
+  .wa-banner {
+    padding: 32px 24px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Social grid 2-col on small mobile */
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Testimonials 1-col */
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Services cards 1-col */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* WhyChooseUs span card full width */
+  .why-span-card {
+    grid-column: span 1 !important;
+  }
+  /* Hero CTA buttons stack */
+  .hero-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .hero-ctas a, .hero-ctas button {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+  /* Navbar height reduction */
+  nav > div > div {
+    height: 64px !important;
+  }
+}
